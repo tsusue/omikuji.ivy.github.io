@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>おみくじ結果</title>
+    <link rel="stylesheet" href="result.css">
+</head>
+<body>
+
+<div class="result-container">
+
+    <!-- 結果カードの画像 -->
+    <img id="result-img" class="result-card" src="" alt="">
+
+    <!-- 結果文字 -->
+    <h1 id="big-fortune" class="result-text-big"></h1>
+    <h1 id="normal-fortune" class="normal-result-text" style="display: none;"></h1>
+
+    <!-- コメント -->
+    <p id="message" class="result-comment"></p>
+
+    <!-- ボタン -->
+    <div class="buttons-container">
+        <button class="action-button" id="top-btn" onclick="location.href='index.html'">TOPに戻る</button>
+        <button class="action-button" id="retry-btn" onclick="location.href='omikuji.html'">もう一度引く</button>
+    </div>
+
+</div>
+
+<script src="result.js"></script>
+</body>
+</html>

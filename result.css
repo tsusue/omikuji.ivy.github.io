@@ -1,0 +1,164 @@
+/* ==========================
+   共通スタイル（PC・スマホ共通）
+========================== */
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("hyousi0.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.result-container {
+    text-align: center;
+    padding-top: 150px; /* 上下バランス微調整（PC用） */
+    color: #8b0000;
+    text-shadow: 1px 1px 2px white;
+    position: relative;
+}
+
+/* 結果カード */
+.result-card {
+    width: 260px;
+    display: block;
+    margin: 40px auto 20px;
+}
+
+/* 大きな結果文字 */
+.result-text-big {
+    font-size: 180px;
+    font-weight: bold;
+    color: rgb(186, 13, 13);
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* 通常結果文字（コメント表示後） */
+.normal-result-text {
+    font-size: 64px;
+    font-weight: bold;
+    color: rgb(186, 13, 13);
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* コメント */
+.result-comment {
+    font-size: 32px;  
+    font-weight: 600; 
+    color: #111;
+    text-align: center;
+    margin-top: 40px;  /* コメントを少し下に */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+    word-wrap: break-word;
+    opacity: 0; 
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+/* コメント表示時 */
+.result-comment.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ボタン */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* ボタン間隔 */
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.action-button {
+    font-size: 1.5rem;
+    padding: 12px 30px;
+    background-color: #e2d096;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.action-button:hover {
+    transform: scale(1.05);
+    background-color: #edc979df;
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+/* ==========================
+   スマホ用（幅600px以下）
+========================== */
+@media (max-width: 600px) {
+
+    /* body と html を画面全体に */
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    /* 結果コンテナを縦中央に */
+    .result-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 縦中央 */
+        align-items: center;     /* 横中央 */
+        padding: 20px 10px;      /* 上下余白 */
+        height: 100%;             /* 画面全体 */
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    /* 結果文字のサイズ調整 */
+    .result-text-big,
+    .normal-result-text {
+        font-size: 5rem !important;
+        margin: 0 auto 20px auto;
+        text-align: center;
+    }
+
+    /* 結果カード画像 */
+    .result-card {
+        width: 75% !important;
+        max-width: 240px;
+        margin: 0 auto 20px auto !important;
+        display: block;
+    }
+
+    /* コメント部分 */
+    .result-comment {
+        font-size: 1rem !important;
+        line-height: 1.8;
+        width: 90%;
+        margin: 20px auto 40px auto !important;
+        text-align: center;
+    }
+
+    /* ボタン */
+    .buttons-container {
+        position: relative;  /* 固定解除 */
+        margin-top: 20px;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .action-button {
+        font-size: 1rem !important;
+        padding: 10px 20px;
+        width: 70%;
+        margin: 0 auto;
+    }
+}

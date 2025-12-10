@@ -1,0 +1,268 @@
+/* -------------------------------------
+   全体
+------------------------------------- */
+body {
+    margin: 0;
+    font-family: "M PLUS 1p", sans-serif;
+    text-align: center;
+}
+
+/* -------------------------------------
+ 表紙
+------------------------------------- */
+body {
+    margin: 0;
+    background-image: url(hyousi0.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+
+
+.top-container {
+    min-height: 100vh;         /* 画面の高さに合わせる */
+    display: flex;
+    flex-direction: column;    /* ←縦並びを強制する */
+    justify-content: center;   /* 縦方向の中央寄せ */
+    align-items: center;       /* 横方向中央寄せ */
+    text-align: center;
+}
+
+.title {
+    font-size: 3.8rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    margin-bottom: 40px;      /* ボタンとの間隔 */
+    opacity: 1;
+    display: inline-block;
+}
+
+@keyframes fluffy {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+
+/* ボタンの位置調整 */
+.start-btn {
+    display: inline-block;
+    font-size: 1.5rem;
+    padding: 12px 30px;
+    background-color: #e2d096;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    margin-top: 40px; /* ←追加分も残す */
+}
+
+.start-btn:hover {
+    transform: scale(1.05);
+    background-color: #edc979df;
+}
+
+
+/* -------------------------------------
+ おみくじページ
+------------------------------------- */
+.omikuji-page {
+    background-image: url("hyousi0.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* カード置き場：中央 */
+.cards-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 配置崩れ防止 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* カード本体 */
+
+.card {
+    width: 150px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    position: absolute;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.card:hover {
+    animation: floatY 1.5s ease-in-out infinite;
+    z-index: 10; /* 他のカードより前面に */
+}
+
+/* 最終整列時にカード同士がくっつかないように */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* カード間の余白 */
+    flex-wrap: wrap; /* スマホ時も崩れない */
+    pointer-events: auto; /* クリック可能 */
+}
+
+
+
+
+
+
+
+
+/* シャッフル中のゆらぎ用アニメ（任意） */
+@keyframes shake {
+    0%   { transform: translateX(-10px) rotate(-5deg); }
+    25%  { transform: translateX(10px) rotate(5deg); }
+    50%  { transform: translateX(-10px) rotate(-5deg); }
+    75%  { transform: translateX(10px) rotate(5deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+/* 最終整列用 */
+.cards-final {
+    position: relative;  /* grid に戻す */
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.result-page {
+    margin: 0;
+    font-family: "M PLUS 1p", sans-serif;
+    text-align: center;
+    background: #000;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-bg {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    text-align: center;
+    padding: 40px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.result-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+.return-button {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 30px;
+    font-size: 1.3rem;
+    background-color: #e2d096;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+}
+
+.return-button:hover {
+    transform: translateX(-50%) translateY(-8px); /* 少し浮く */
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+}
+
+.card {
+    backface-visibility: hidden; /* 回転時に裏面が見えないように */
+    transform-style: preserve-3d;
+}
+
+.card.flipped {
+    transform: rotateY(180deg) scale(1.5); /* めくる＋拡大 */
+    transition: transform 0.6s ease;
+}
+
+.result-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 50;
+    pointer-events: none; /* 結果表示中はカード操作禁止 */
+}
+
+.result-card img {
+    width: 250px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.result-card p {
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(0,0,0,0.7);
+}
+
+.card {
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+/* クリック時の拡大アニメ */
+.card.zoom {
+    transform: scale(1.2);   /* 好みで調整OK */
+}
+
+/* -------------------------------------------
+   スマホ用：カード整列（重なっても画面内）
+------------------------------------------- */
+
+/* -------------------------------------------
+   スマホ用：カード整列（重なっても画面内）
+------------------------------------------- */
+@media (max-width: 600px) {
+    .cards-container {
+        
+        gap: 10px; /* 横・縦に少し重ねる */
+        padding: 0 10px;
+        justify-content: space-around;
+    }
+    .card {
+        width: 85px;
+        height: 120px;
+        margin: 5px;
+    }
+}

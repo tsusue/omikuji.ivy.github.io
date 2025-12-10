@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>おみくじ 結果</title>
+<link rel="stylesheet" href="result.css"> <!-- 別ファイルのCSS -->
+</head>
+
+<body>
+
+
+<div class="result-container">
+    <!-- 結果画像 -->
+    <img id="resultImage" class="result-image" src="" alt="おみくじ結果">
+
+    <!-- 結果テキスト -->
+    <div id="resultText" class="result-text"></div>
+
+    <!-- 表紙に戻るボタン -->
+    <button class="return-button" onclick="location.href='index.html'">
+        TOPに戻る
+    </button>
+</div>
+
+<div class="card-area">
+    <div id="cards" class="cards-container">
+        <!-- ここに7枚のカードが JS で追加されます -->
+    </div>
+</div>
+
+<!-- ▼ ここに結果表示用カードを追加（追加分） -->
+<div id="result-card" class="result-card hidden">
+    <img id="result-img" src="" alt="おみくじ結果" />
+    <p id="result-text"></p>
+</div>
+
+
+<script>
+// ===============================
+// おみくじ結果表示スクリプト
+// ===============================
+
+// 例として7種類のおみくじ結果
+const results = [
+    { name: "大吉", image: "result_daikichi.png" },
+    { name: "中吉", image: "result_chukichi.png" },
+    { name: "小吉", image: "result_shokichi.png" },
+    { name: "吉",   image: "result_kichi.png" },
+    { name: "末吉", image: "result_suekichi.png" },
+    { name: "凶",   image: "result_kyo.png" },
+    { name: "大凶", image: "result_daikyo.png" }
+];
+
+// カードクリックで選ばれた結果の番号をURLパラメータで受け取る例
+const params = new URLSearchParams(window.location.search);
+const selected = parseInt(params.get("card")) || 0; // デフォルトは0番
+
+// 結果を表示
+const result = results[selected];
+document.getElementById("resultImage").src = result.image;
+document.getElementById("resultText").textContent = result.name;
+</script>
+
+</body>
+</html>

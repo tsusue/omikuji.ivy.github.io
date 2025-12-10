@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>おみくじ 表紙</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="top-page">
+
+  <!-- ▼▼ 表紙の背景画像を変えたい場合ここ ↓▼▼ -->
+  <!-- CSSで .top-page の background-image を変更 -->
+  <!-- ▲▲ 表紙の背景画像を変えたい場合ここ ▲▲ -->
+
+  <div class="top-container">
+    <h1 class="title" id="titleText">あなたの運勢は？</h1>
+    <button class="start-btn">おみくじを引く</button>
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    // ---------------------
+    // 表紙ボタン
+    // ---------------------
+    const startBtn = document.querySelector(".start-btn");
+    if (startBtn) {
+        startBtn.addEventListener("click", () => {
+            console.log("ボタン押されました → omikuji.html へ移動");
+            location.href = "omikuji.html";
+        });
+    }
+
+    // ---------------------
+    // タイトルのタイピング処理
+    // ---------------------
+    const title = document.getElementById("titleText");
+    const text = "あなたの運勢は？";
+    
+    if (!title) return;
+
+    title.textContent = "";
+    title.style.opacity = "1";
+
+    let index = 0;
+
+    const interval = setInterval(() => {
+        title.textContent += text[index];
+        index++;
+
+        if (index === text.length) {
+            clearInterval(interval);
+            setTimeout(() => {
+                title.style.animation = "fluffy 3s ease-in-out infinite";
+            }, 500);
+        }
+    }, 200);
+});
+</script>
+
+
+</body>
+</html>
+
