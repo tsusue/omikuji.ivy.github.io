@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 表示内容セット
     bigFortune.textContent = text;
     normalFortune.textContent = text;
-    resultImg.src = img;
 
     const DISPLAY_DURATION = 2000; // 結果ドーン表示時間
 
@@ -44,3 +43,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }, DISPLAY_DURATION);
 
 });
+
